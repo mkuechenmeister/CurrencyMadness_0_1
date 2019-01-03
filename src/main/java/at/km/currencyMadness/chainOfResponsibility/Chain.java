@@ -2,13 +2,15 @@ package at.km.currencyMadness.chainOfResponsibility;
 
 import at.km.currencyMadness.given.WR;
 
-public abstract class Chain{
+public abstract class Chain extends WR{
 
+    protected Chain nextChain;
 
-
-    public abstract void setNextChain(Chain nextChain);
+    public void setNextChain(Chain nextChain){
+        this.nextChain = nextChain;
+    }
 
     public double execute(String variante, double betrag) {
-        return -1;
+        return super.umrechnen(variante, betrag);
     }
 }

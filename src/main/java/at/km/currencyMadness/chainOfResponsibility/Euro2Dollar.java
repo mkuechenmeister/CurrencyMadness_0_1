@@ -1,26 +1,26 @@
 package at.km.currencyMadness.chainOfResponsibility;
 
+import at.km.currencyMadness.currencies.Currencies;
+import at.km.currencyMadness.currencies.Dollar;
 import at.km.currencyMadness.given.WR;
 
-public class Euro2Dollar implements Chain{
-
-    private Chain nextInChain;
+public class Euro2Dollar extends Chain{
 
 
-    @Override
-    public void setNextChain(Chain nextChain) {
-        this.nextInChain = nextChain;
 
-    }
+
+
 
     @Override
-    public void execute(String variante, double betrag) {
+    public double execute(String variante, double betrag) {
         if (variante == "USD") {
 
-
+            Currencies dollar = new Dollar("2");
+            return umrechnen(variante, betrag);
         } else {
-            nextInChain.execute(variante,betrag);
+           this.nextChain.execute(variante,betrag);
         }
+        return -1;
 
     }
 
