@@ -41,4 +41,8 @@ public abstract class Currencies{
     public void setRate(double rate) {
         this.rate = rate;
     }
+
+    public double getRevertRate() {
+        return (1 / getRate());
+    }
 }

@@ -10,9 +10,10 @@ public class Euro2Yen extends Chain{
     @Override
     public double execute(String variante, double betrag) {
         if (variante == "Euro2Yen") {
-            return umrechnen("JPY", betrag);
+            return umrechnen("Euro2Yen", betrag);
         } else {
-            this.nextChain.execute(variante,betrag);
+            System.out.println("Unable to perform Calculation");
+            //this.nextChain.execute(variante,betrag);
         }
         return -1;
 
