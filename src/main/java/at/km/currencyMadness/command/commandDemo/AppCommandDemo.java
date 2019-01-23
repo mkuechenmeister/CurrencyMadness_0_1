@@ -7,6 +7,13 @@ public class AppCommandDemo {
         DeviceButton onPressed = new DeviceButton(onCommand);
 
         onPressed.press();
+
+        TurnVolUp upCommand = new TurnVolUp(newDevice);
+        DeviceButton upPressed = new DeviceButton(upCommand);
+
+        upPressed.press();
+        upPressed.press();
+        upPressed.press();
     }
 
 }
