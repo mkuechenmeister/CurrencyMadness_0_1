@@ -16,9 +16,10 @@ public class Euro2Dollar extends Chain{
 
             return umrechnen("Euro2Dollar", betrag);
         } else {
-            this.nextChain.execute(variante,betrag);
+
+           return this.nextChain.execute(variante, betrag);
         }
-        return -1;
+
 
     }
 

@@ -4,7 +4,8 @@ import at.km.currencyMadness.chainOfResponsibility.demochain.*;
 
 public interface Calculate {
 
-    static int calculate(String variante, double wert) {
+    static double calculate(String variante, double wert) {
+
         Chain e2d = new Euro2Dollar();
         Chain e2y = new Euro2Yen();
 
@@ -12,10 +13,8 @@ public interface Calculate {
         e2d.setNextChain(e2y);
 
 
+        return e2d.execute(variante, wert);
 
-
-        e2d.execute(variante,wert);
-        return 1;
 
     }
 

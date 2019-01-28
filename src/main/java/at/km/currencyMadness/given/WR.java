@@ -23,12 +23,13 @@ public abstract class WR implements IUmrechnen {
 
             double umgerechnet = betrag * template.getRate();
             Umrechnung umrechnung = new AktuelleUmrechnung(variante, umgerechnet);
-            umrechnung = new Logger((AktuelleUmrechnung) umrechnung);
+            umrechnung = new Logger((AktuelleUmrechnung) umrechnung); //Decorator mit dem Aufruf des Loggers
             System.out.println(umrechnung.getText());
-            umrechnung = new Gebuehren(umrechnung);
-            System.out.println(umrechnung.getSum());
+            umrechnung = new Gebuehren(umrechnung); //Decorator mit Aufruf des Gebührenrechners
             umgerechnet = umrechnung.getSum();
+            System.out.println(umgerechnet);
             return umgerechnet;
+
 
         } else {
             System.out.println("Umrechnen");
