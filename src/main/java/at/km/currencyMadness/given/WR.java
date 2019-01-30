@@ -1,5 +1,6 @@
 package at.km.currencyMadness.given;
 
+import at.km.currencyMadness.command.Comando;
 import at.km.currencyMadness.decorator.AktuelleUmrechnung;
 import at.km.currencyMadness.decorator.Gebuehren;
 import at.km.currencyMadness.decorator.Logger;
@@ -21,8 +22,8 @@ public abstract class WR implements IUmrechnen {
 
         if (template != null) {
 
-            double umgerechnet = betrag * template.getRate();
-            Umrechnung umrechnung = new AktuelleUmrechnung(variante, umgerechnet);
+            double umgerechnet = Comando.command(betrag, template.getRate());//Übergabe des umzurechnenden Betrages an das Command-Pattern Interface
+            Umrechnung umrechnung = new AktuelleUmrechnung(variante, umgerechnet); //Decorator
             umrechnung = new Logger((AktuelleUmrechnung) umrechnung); //Decorator mit dem Aufruf des Loggers
             System.out.println(umrechnung.getText());
             umrechnung = new Gebuehren(umrechnung); //Decorator mit Aufruf des Gebührenrechners
@@ -32,10 +33,8 @@ public abstract class WR implements IUmrechnen {
 
 
         } else {
-            System.out.println("Umrechnen");
-            System.out.println(variante);
-            System.out.println(betrag);
-            return betrag;
+
+            return -1;
         }
 
 

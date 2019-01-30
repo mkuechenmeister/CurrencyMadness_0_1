@@ -2,7 +2,7 @@ package at.km.currencyMadness.decorator;
 
 public class Gebuehren extends Decorator {
 
-    Umrechnung umrechnung;
+    private Umrechnung umrechnung;
 
     public Gebuehren(Umrechnung umrechnung) {
         this.umrechnung = umrechnung;
